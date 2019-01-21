@@ -1,0 +1,44 @@
+﻿@page
+@model ParkingSystem.Pages.ParkingSlots.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<h4>ParkingSlot</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ParkingSlot.Plate" class="control-label"></label>
+                <input asp-for="ParkingSlot.Plate" class="form-control" />
+                <span asp-validation-for="ParkingSlot.Plate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ParkingSlot.TimeIn" class="control-label"></label>
+                <input asp-for="ParkingSlot.TimeIn" class="form-control" />
+                <span asp-validation-for="ParkingSlot.TimeIn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ParkingSlot.TimeOut" class="control-label"></label>
+                <input asp-for="ParkingSlot.TimeOut" class="form-control" />
+                <span asp-validation-for="ParkingSlot.TimeOut" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,48 @@
+﻿@page
+@model ParkingSystem.Pages.ParkingSlots.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ParkingSlot[0].Plate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ParkingSlot[0].TimeIn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ParkingSlot[0].TimeOut)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.ParkingSlot) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Plate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeIn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeOut)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ParkingID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ParkingID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ParkingID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

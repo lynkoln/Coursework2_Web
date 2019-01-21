@@ -1,0 +1,40 @@
+﻿@page
+@model ParkingSystem.Pages.ParkingSlots.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>ParkingSlot</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ParkingSlot.Plate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ParkingSlot.Plate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ParkingSlot.TimeIn)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ParkingSlot.TimeIn)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ParkingSlot.TimeOut)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ParkingSlot.TimeOut)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="ParkingSlot.ParkingID" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>
