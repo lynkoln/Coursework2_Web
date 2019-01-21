@@ -1,0 +1,31 @@
+﻿@page
+@model ParkingSystem.Pages.Payments.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Payment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Payment.TimeOfPayment)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Payment.TimeOfPayment)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Payment.Total)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Payment.Total)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Payment.ReceiptNo">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

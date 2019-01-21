@@ -13,7 +13,7 @@ namespace ParkingSystem.Models
         [Required]
         public string Position { get; set; }
         [Required]
-        public decimal Price { get; set; }
+        public float Price { get; set; }
 
 
     }

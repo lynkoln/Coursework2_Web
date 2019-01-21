@@ -10,11 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\Customers\" />
-    <Folder Include="Pages\Admins\" />
-    <Folder Include="Pages\PositionDiscounts\" />
-    <Folder Include="Pages\Pricings\" />
-    <Folder Include="Pages\Payments\" />
+    <Folder Include="Check\" />
   </ItemGroup>
 
 </Project>
