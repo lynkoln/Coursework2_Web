@@ -17,9 +17,5 @@ namespace ParkingSystem.Models
 
 
 
-        public ICollection<ParkingSlot> ParkingID { get; set; }
-        public ICollection<Customer> CustomerID { get; set; }
-        public ICollection<Pricing> Period { get; set; }
-
     }
 }

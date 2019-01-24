@@ -18,7 +18,7 @@ namespace ParkingSystem.Models
         public DateTime? TimeOut { get; set; }
 
 
-        public ICollection<Customer> CustomerID { get; set; }
+        public ICollection<Payment> PaymentID { get; set; }
 
 
     }

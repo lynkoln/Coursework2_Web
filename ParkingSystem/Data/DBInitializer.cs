@@ -68,21 +68,21 @@ namespace ParkingSystem.Models
             var pricings = new Pricing[]
    {
             new Pricing{Period=1,Price=1.2f},
-            new Pricing{Period=2,Price=2},
-            new Pricing{Period=3,Price=3},
+            new Pricing{Period=2,Price=2f},
+            new Pricing{Period=3,Price=3f},
             new Pricing{Period=4,Price=3.8f},
             new Pricing{Period=5,Price=4.5f},
             new Pricing{Period=6,Price=5.2f}
 
 
    };
-            foreach (Pricing e in pricings)
+            foreach (Pricing z in pricings)
             {
-                context.Pricing.Add(e);
+                context.Pricing.Add(z);
             }
             context.SaveChanges();
 
 
-
+        }
     }
 }

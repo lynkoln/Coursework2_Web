@@ -20,8 +20,10 @@ namespace ParkingSystem
                 try
                 {
                     var context = services.GetRequiredService<ParkingSystemContext>();
-                    context.Database.EnsureCreated();
+                    // using ParkingSystem.Data; 
+                    DbInitializer.Initialize(context);
                 }
+
                 catch (Exception ex)
                 {
                     var logger = services.GetRequiredService<ILogger<Program>>();

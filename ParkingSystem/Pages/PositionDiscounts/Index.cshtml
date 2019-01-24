@@ -14,6 +14,9 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.PositionDiscount[0].Position)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.PositionDiscount[0].Price)
             </th>
             <th></th>
@@ -22,6 +25,9 @@
     <tbody>
 @foreach (var item in Model.PositionDiscount) {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Position)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Price)
             </td>

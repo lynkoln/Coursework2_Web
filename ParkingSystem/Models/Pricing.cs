@@ -14,6 +14,6 @@ namespace ParkingSystem.Models
         public float Price { get; set; }
 
 
-
+        public ICollection<Payment> PaymentID { get; set; }
     }
 }
