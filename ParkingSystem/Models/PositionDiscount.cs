@@ -15,6 +15,6 @@ namespace ParkingSystem.Models
         [Required]
         public float Price { get; set; }
 
-        public IEnumerable<Customer> CustomerID { get; set; }
+        public ICollection<Customer> CustomerID { get; set; }
     }
 }

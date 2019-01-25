@@ -17,7 +17,7 @@ namespace ParkingSystem.Models
         [Required]
         public string PhoneNo { get; set; }
         public string Email { get; set; }
-        public virtual PositionDiscount PositionDiscount { set; get; }
+        public virtual PositionDiscount PositionDiscount { get; set; }
 
         public ICollection<ParkingSlot> ParkingID { get; set; }
 

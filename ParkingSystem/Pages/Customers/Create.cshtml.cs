@@ -11,6 +11,15 @@ namespace ParkingSystem.Pages.Customers
 {
     public class CreateModel : PageModel
     {
+        public SelectList PositionSL { get; set; }
+
+        public void PositionDropdown(ParkingSystemContext _context, object selectedPosition = null)
+        {
+            var positionQuery = from d in _context.PositionDiscount orderby d.Position select d;
+
+            PositionSL = new SelectList(positionQuery, "Price", "Position", selectedPosition);
+        }
+
         private readonly ParkingSystem.Models.ParkingSystemContext _context;
 
         public CreateModel(ParkingSystem.Models.ParkingSystemContext context)
@@ -20,6 +29,7 @@ namespace ParkingSystem.Pages.Customers
 
         public IActionResult OnGet()
         {
+            PositionDropdown(_context);
             return Page();
         }
 
@@ -33,10 +43,21 @@ namespace ParkingSystem.Pages.Customers
                 return Page();
             }
 
-            _context.Customer.Add(Customer);
-            await _context.SaveChangesAsync();
+            var emptyCustomer = new Customer();
 
-            return RedirectToPage("./Index");
+            if (await TryUpdateModelAsync<Customer>(
+                 emptyCustomer,
+                 "customer",   // Prefix for form value.
+                   c => c.CustomerID, c => c.FirstName, c => c.LastName, c => c.PhoneNo, c => c.Email, c => c.PositionDiscount))
+            {
+                _context.Customer.Add(emptyCustomer);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
+            }
+
+            // Select DepartmentID if TryUpdateModelAsync fails.
+            PositionDropdown(_context, emptyCustomer.CustomerID);
+            return Page();
         }
     }
 }

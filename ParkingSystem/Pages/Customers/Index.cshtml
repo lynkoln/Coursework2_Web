@@ -26,7 +26,7 @@
                 @Html.DisplayNameFor(model => model.Customer[0].Email)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Customer[0].PositionDiscount.Position)
+                @Html.DisplayNameFor(model => model.Customer[0].PositionDiscount)
             </th>
             <th></th>
         </tr>
@@ -47,7 +47,7 @@
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PositionDiscount.Position)
+                @Html.DisplayFor(modelItem => item.PositionDiscount)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.CustomerID">Edit</a> |

@@ -37,9 +37,11 @@
             </div>
             <div class="form-group">
                 <label asp-for="Customer.PositionDiscount" class="control-label"></label>
-                <select asp-for="Customer.PositionDiscount"
-                        asp-items="ViewBag.PositionDiscount"></select>
-                <span asp-validation-for="Customer.PositionDiscount" class="text-danger"></span>
+                <select asp-for="Customer.PositionDiscount" class="form-control"
+                        asp-items="@Model.PositionSL">
+                    <option value="">-- Select Department --</option>
+                </select>
+                <span asp-validation-for="Customer.PositionDiscount" class="text-danger" />
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-default" />
