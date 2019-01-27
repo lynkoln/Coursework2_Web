@@ -36,12 +36,12 @@
                 <span asp-validation-for="Customer.Email" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Customer.PositionDiscount" class="control-label"></label>
-                <select asp-for="Customer.PositionDiscount" class="form-control"
+                <label asp-for="Customer.Position" class="control-label"></label>
+                <select asp-for="Customer.Position" class="form-control"
                         asp-items="@Model.PositionSL">
                     <option value="">-- Select Department --</option>
                 </select>
-                <span asp-validation-for="Customer.PositionDiscount" class="text-danger" />
+                <span asp-validation-for="Customer.Position" class="text-danger" />
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-default" />

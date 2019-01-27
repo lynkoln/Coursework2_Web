@@ -54,7 +54,7 @@ namespace ParkingSystem.Pages.Customers
                 return NotFound();
             }
             // Select current PositionDiscount.
-            PositionDropdown(_context, Customer.PositionDiscount);
+            PositionDropdown(_context, Customer.Position);
             return Page();
         }
 
@@ -70,14 +70,14 @@ namespace ParkingSystem.Pages.Customers
             if (await TryUpdateModelAsync<Customer>(
                  customerToUpdate,
                  "Customer",   // Prefix for form value.
-                   c=> c.CustomerID, c=>c.FirstName, c=>c.LastName, c=>c.PhoneNo,c=>c.Email,c=>c.PositionDiscount))
+                   c=> c.CustomerID, c=>c.FirstName, c=>c.LastName, c=>c.PhoneNo,c=>c.Email,c=>c.Position))
             {
                 await _context.SaveChangesAsync();
                 return RedirectToPage("./Index");
             }
 
             // Select DepartmentID if TryUpdateModelAsync fails.
-            PositionDropdown(_context, customerToUpdate.PositionDiscount);
+            PositionDropdown(_context, customerToUpdate.Position);
             return Page();
         }
     }

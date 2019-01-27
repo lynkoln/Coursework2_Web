@@ -48,7 +48,7 @@ namespace ParkingSystem.Pages.Customers
             if (await TryUpdateModelAsync<Customer>(
                  emptyCustomer,
                  "Customer",   // Prefix for form value.
-                   c => c.CustomerID, c => c.FirstName, c => c.LastName, c => c.PhoneNo, c => c.Email, c => c.PositionDiscount))
+                   c => c.CustomerID, c => c.FirstName, c => c.LastName, c => c.PhoneNo, c => c.Email, c => c.Position))
             {
                 _context.Customer.Add(emptyCustomer);
                 await _context.SaveChangesAsync();
