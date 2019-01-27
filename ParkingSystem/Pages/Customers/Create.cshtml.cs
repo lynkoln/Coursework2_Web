@@ -17,7 +17,7 @@ namespace ParkingSystem.Pages.Customers
         {
             var positionQuery = from d in _context.PositionDiscount orderby d.Position select d;
 
-            PositionSL = new SelectList(positionQuery, "Price", "Position", selectedPosition);
+            PositionSL = new SelectList(positionQuery, "Position", "Position", selectedPosition);
         }
 
         private readonly ParkingSystem.Models.ParkingSystemContext _context;
@@ -47,7 +47,7 @@ namespace ParkingSystem.Pages.Customers
 
             if (await TryUpdateModelAsync<Customer>(
                  emptyCustomer,
-                 "customer",   // Prefix for form value.
+                 "Customer",   // Prefix for form value.
                    c => c.CustomerID, c => c.FirstName, c => c.LastName, c => c.PhoneNo, c => c.Email, c => c.PositionDiscount))
             {
                 _context.Customer.Add(emptyCustomer);
@@ -56,7 +56,7 @@ namespace ParkingSystem.Pages.Customers
             }
 
             // Select DepartmentID if TryUpdateModelAsync fails.
-            PositionDropdown(_context, emptyCustomer.CustomerID);
+            PositionDropdown(_context, emptyCustomer.PositionDiscount);
             return Page();
         }
     }
