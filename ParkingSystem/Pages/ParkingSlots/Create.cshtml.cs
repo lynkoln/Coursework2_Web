@@ -9,23 +9,8 @@ using ParkingSystem.Models;
 
 namespace ParkingSystem.Pages.ParkingSlots
 {
-
     public class CreateModel : PageModel
     {
-        public SelectList CustomerSL { get; set; }
-
-        public void CustomerDropdown(ParkingSystemContext _context, object selectedCustomer = null)
-        {
-            var customerQuery = from d in _context.Customer orderby d.CustomerID
-                                select new SelectListItem
-                                {
-                                   Text = d.FirstName +" "+ d.LastName ,
-                                   Value = d.CustomerID.ToString()
-                                }; ;
-
-            CustomerSL = new SelectList(customerQuery, "Value","Text", selectedCustomer);
-        }
-
         private readonly ParkingSystem.Models.ParkingSystemContext _context;
 
         public CreateModel(ParkingSystem.Models.ParkingSystemContext context)
@@ -35,7 +20,6 @@ namespace ParkingSystem.Pages.ParkingSlots
 
         public IActionResult OnGet()
         {
-            CustomerDropdown(_context);
             return Page();
         }
 

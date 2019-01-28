@@ -12,25 +12,10 @@ namespace ParkingSystem.Pages.ParkingSlots
 {
     public class EditModel : PageModel
     {
-        public SelectList CustomerSL { get; set; }
-
-        public void CustomerDropdown(ParkingSystemContext _context, object selectedCustomer = null)
-        {
-            var customerQuery = from d in _context.Customer
-                                orderby d.CustomerID
-                                select new SelectListItem
-                                {
-                                    Text = d.FirstName + " " + d.LastName,
-                                    Value = d.CustomerID.ToString()
-                                }; ;
-
-            CustomerSL = new SelectList(customerQuery, "Value", "Text", selectedCustomer);
-        }
         private readonly ParkingSystem.Models.ParkingSystemContext _context;
 
         public EditModel(ParkingSystem.Models.ParkingSystemContext context)
         {
-            
             _context = context;
         }
 
@@ -43,7 +28,7 @@ namespace ParkingSystem.Pages.ParkingSlots
             {
                 return NotFound();
             }
-            CustomerDropdown(_context);
+
             ParkingSlot = await _context.ParkingSlot.FirstOrDefaultAsync(m => m.ParkingID == id);
 
             if (ParkingSlot == null)
