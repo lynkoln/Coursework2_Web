@@ -3,6 +3,7 @@ for details on configuring this project to bundle and minify static web assets. 
 body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: #dddddd;
 }
 
 /* Wrapping element */
@@ -35,3 +36,13 @@ body {
         display: none;
     }
 }
+
+.btn_custom {
+    padding-top: 37.5%;
+    padding-bottom: 37.5%;
+
+    font-weight: bold;
+    font-size: 120%;
+    text-align: center;
+}
+

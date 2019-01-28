@@ -21,6 +21,7 @@ namespace ParkingSystem
                 {
                     var context = services.GetRequiredService<ParkingSystemContext>();
                     // using ParkingSystem.Data; 
+                    context.Database.EnsureCreated();
                     DbInitializer.Initialize(context);
                 }
 
