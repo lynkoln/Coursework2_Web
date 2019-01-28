@@ -10,7 +10,7 @@ using ParkingSystem.Models;
 namespace ParkingSystem.Migrations
 {
     [DbContext(typeof(ParkingSystemContext))]
-    [Migration("20190127011031_Init")]
+    [Migration("20190127182454_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -70,7 +70,7 @@ namespace ParkingSystem.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CustomerID");
+                    b.Property<int>("CustomerID");
 
                     b.Property<string>("Plate")
                         .IsRequired();
@@ -147,9 +147,10 @@ namespace ParkingSystem.Migrations
 
             modelBuilder.Entity("ParkingSystem.Models.ParkingSlot", b =>
                 {
-                    b.HasOne("ParkingSystem.Models.Customer")
+                    b.HasOne("ParkingSystem.Models.Customer", "Customer")
                         .WithMany("ParkingID")
-                        .HasForeignKey("CustomerID");
+                        .HasForeignKey("CustomerID")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("ParkingSystem.Models.Payment", b =>

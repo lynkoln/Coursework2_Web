@@ -17,7 +17,15 @@ namespace ParkingSystem.Pages.ParkingSlots
         {
             _context = context;
         }
-
+        public object fullname;
+        public object GetFullName(int z)
+        {
+            var item = (from x in _context.Customer
+                        where (x.CustomerID == z)
+                        select x.FirstName + " " + x.LastName).Single();
+            fullname = item;
+            return fullname;
+        }
         public ParkingSlot ParkingSlot { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
