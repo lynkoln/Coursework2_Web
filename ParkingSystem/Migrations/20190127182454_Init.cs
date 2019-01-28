@@ -79,7 +79,7 @@ namespace ParkingSystem.Migrations
                     Plate = table.Column<string>(nullable: false),
                     TimeIn = table.Column<DateTime>(nullable: false),
                     TimeOut = table.Column<DateTime>(nullable: true),
-                    CustomerID = table.Column<int>(nullable: true)
+                    CustomerID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -89,7 +89,7 @@ namespace ParkingSystem.Migrations
                         column: x => x.CustomerID,
                         principalTable: "Customer",
                         principalColumn: "CustomerID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
