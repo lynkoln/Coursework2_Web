@@ -22,7 +22,7 @@ namespace ParkingSystem.Models
 
         public ICollection<ParkingSlot> ParkingID { get; set; }
 
-        public ICollection<Payment> PaymentID { get; set; }
+    
 
     }
 }

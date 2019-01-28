@@ -10,14 +10,14 @@ using ParkingSystem.Models;
 namespace ParkingSystem.Migrations
 {
     [DbContext(typeof(ParkingSystemContext))]
-    [Migration("20190127182454_Init")]
+    [Migration("20190128112546_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.4-rtm-31024")
+                .HasAnnotation("ProductVersion", "2.1.1-rtm-30846")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -92,9 +92,9 @@ namespace ParkingSystem.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CustomerID");
+                    b.Property<int>("ParkingID");
 
-                    b.Property<int?>("ParkingSlotParkingID");
+                    b.Property<string>("Period");
 
                     b.Property<int?>("PricingPeriod");
 
@@ -104,9 +104,7 @@ namespace ParkingSystem.Migrations
 
                     b.HasKey("ReceiptNo");
 
-                    b.HasIndex("CustomerID");
-
-                    b.HasIndex("ParkingSlotParkingID");
+                    b.HasIndex("ParkingID");
 
                     b.HasIndex("PricingPeriod");
 
@@ -155,15 +153,12 @@ namespace ParkingSystem.Migrations
 
             modelBuilder.Entity("ParkingSystem.Models.Payment", b =>
                 {
-                    b.HasOne("ParkingSystem.Models.Customer")
+                    b.HasOne("ParkingSystem.Models.ParkingSlot", "ParkingSlot")
                         .WithMany("PaymentID")
-                        .HasForeignKey("CustomerID");
+                        .HasForeignKey("ParkingID")
+                        .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("ParkingSystem.Models.ParkingSlot")
-                        .WithMany("PaymentID")
-                        .HasForeignKey("ParkingSlotParkingID");
-
-                    b.HasOne("ParkingSystem.Models.Pricing")
+                    b.HasOne("ParkingSystem.Models.Pricing", "Pricing")
                         .WithMany("PaymentID")
                         .HasForeignKey("PricingPeriod");
                 });

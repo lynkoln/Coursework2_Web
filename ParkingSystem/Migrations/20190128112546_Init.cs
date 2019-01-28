@@ -100,25 +100,19 @@ namespace ParkingSystem.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     TimeOfPayment = table.Column<DateTime>(nullable: false),
                     Total = table.Column<decimal>(nullable: false),
-                    CustomerID = table.Column<int>(nullable: true),
-                    ParkingSlotParkingID = table.Column<int>(nullable: true),
+                    ParkingID = table.Column<int>(nullable: false),
+                    Period = table.Column<string>(nullable: true),
                     PricingPeriod = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Payment", x => x.ReceiptNo);
                     table.ForeignKey(
-                        name: "FK_Payment_Customer_CustomerID",
-                        column: x => x.CustomerID,
-                        principalTable: "Customer",
-                        principalColumn: "CustomerID",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Payment_ParkingSlot_ParkingSlotParkingID",
-                        column: x => x.ParkingSlotParkingID,
+                        name: "FK_Payment_ParkingSlot_ParkingID",
+                        column: x => x.ParkingID,
                         principalTable: "ParkingSlot",
                         principalColumn: "ParkingID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Payment_Pricing_PricingPeriod",
                         column: x => x.PricingPeriod,
@@ -138,14 +132,9 @@ namespace ParkingSystem.Migrations
                 column: "CustomerID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Payment_CustomerID",
+                name: "IX_Payment_ParkingID",
                 table: "Payment",
-                column: "CustomerID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Payment_ParkingSlotParkingID",
-                table: "Payment",
-                column: "ParkingSlotParkingID");
+                column: "ParkingID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Payment_PricingPeriod",

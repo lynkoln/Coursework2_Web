@@ -37,12 +37,12 @@ namespace ParkingSystem.Models
 
             var parkingslots = new ParkingSlot[]
             {
-            new ParkingSlot{Plate="HN11 AQW", TimeIn=DateTime.Parse("2005-09-01 12:13"), TimeOut=DateTime.Parse("2005-09-01 15:13"), },
-            new ParkingSlot{Plate="ES11 AQW", TimeIn=DateTime.Parse("2005-09-01 12:11"), TimeOut=DateTime.Parse("2005-09-01 16:13"), },
-            new ParkingSlot{Plate="HN01 AQW", TimeIn=DateTime.Parse("2005-09-01 12:42"), TimeOut=DateTime.Parse("2005-09-01 17:13"), },
-            new ParkingSlot{Plate="HN44 AQW", TimeIn=DateTime.Parse("2005-09-01 10:13"), TimeOut=DateTime.Parse("2005-09-01 18:13"), },
-            new ParkingSlot{Plate="HN11 ZEE", TimeIn=DateTime.Parse("2005-09-01 12:56"), TimeOut=DateTime.Parse("2005-09-01 19:13"), },
-            new ParkingSlot{Plate="HN11 DEE", TimeIn=DateTime.Parse("2005-09-01 11:13"), TimeOut=DateTime.Parse("2005-09-01 21:13"), }
+            new ParkingSlot{Plate="HN11 AQW", TimeIn=DateTime.Now, TimeOut=DateTime.Parse("2005-09-01 15:13") },
+            new ParkingSlot{Plate="ES11 AQW", TimeIn=DateTime.Parse("2005-09-01 12:11"), TimeOut=DateTime.Parse("2005-09-01 16:13"), CustomerID=6 },
+            new ParkingSlot{Plate="HN01 AQW", TimeIn=DateTime.Parse("2005-09-01 12:42"), TimeOut=DateTime.Parse("2005-09-01 17:13") },
+            new ParkingSlot{Plate="HN44 AQW", TimeIn=DateTime.Parse("2005-09-01 10:13"), TimeOut=DateTime.Parse("2005-09-01 18:13") },
+            new ParkingSlot{Plate="HN11 ZEE", TimeIn=DateTime.Parse("2005-09-01 12:56"), TimeOut=DateTime.Parse("2005-09-01 19:13") },
+            new ParkingSlot{Plate="HN11 DEE", TimeIn=DateTime.Parse("2005-09-01 11:13"), TimeOut=DateTime.Parse("2005-09-01 21:13") }
 
             };
             foreach (ParkingSlot c in parkingslots)

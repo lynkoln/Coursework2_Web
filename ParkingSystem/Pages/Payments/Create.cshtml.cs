@@ -11,6 +11,22 @@ namespace ParkingSystem.Pages.Payments
 {
     public class CreateModel : PageModel
     {
+
+        public SelectList ParkingSL { get; set; }
+
+        public void ParkingDropdown(ParkingSystemContext _context, object selectedParking = null)
+        {
+            var customerQuery = from d in _context.ParkingSlot
+                                orderby d.ParkingID
+                                select new SelectListItem
+                                {
+                                    Text = d.Plate,
+                                    Value = d.ParkingID.ToString()
+                                }; ;
+
+            ParkingSL = new SelectList(customerQuery, "Value", "Text", selectedParking);
+        }
+
         private readonly ParkingSystem.Models.ParkingSystemContext _context;
 
         public CreateModel(ParkingSystem.Models.ParkingSystemContext context)
@@ -20,6 +36,7 @@ namespace ParkingSystem.Pages.Payments
 
         public IActionResult OnGet()
         {
+            ParkingDropdown(_context);
             return Page();
         }
 

@@ -14,7 +14,17 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.Payment[0].ReceiptNo)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Payment[0].TimeOfPayment)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Payment[0].ParkingID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Payment[0].Period)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Payment[0].Total)
@@ -26,7 +36,17 @@
 @foreach (var item in Model.Payment) {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.ReceiptNo)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.TimeOfPayment)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.ParkingID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Period)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Total)

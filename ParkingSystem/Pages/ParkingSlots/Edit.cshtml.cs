@@ -60,6 +60,7 @@ namespace ParkingSystem.Pages.ParkingSlots
                 return Page();
             }
 
+           
             _context.Attach(ParkingSlot).State = EntityState.Modified;
 
             try
@@ -85,5 +86,6 @@ namespace ParkingSystem.Pages.ParkingSlots
         {
             return _context.ParkingSlot.Any(e => e.ParkingID == id);
         }
+
     }
 }

@@ -14,6 +14,14 @@ namespace ParkingSystem.Models
         public DateTime TimeOfPayment { get; set; }
         [Required]
         public decimal Total { get; set; }
+        
+        public int ParkingID { get; set; }
+        public string Period {get;set;}
+       
+        public virtual ParkingSlot ParkingSlot { get; set; }
+        public virtual Pricing Pricing { get; set; }
+
+       
 
 
 
