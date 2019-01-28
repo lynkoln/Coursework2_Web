@@ -16,8 +16,7 @@ namespace ParkingSystem.Models
         public DateTime TimeIn { get; set; }
         
         public DateTime? TimeOut { get; set; }
-        public virtual Customer Customer { get; set; }
-        public int CustomerID { get; set; }
+
 
         public ICollection<Payment> PaymentID { get; set; }
 

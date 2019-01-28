@@ -68,7 +68,7 @@ namespace ParkingSystem.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CustomerID");
+                    b.Property<int?>("CustomerID");
 
                     b.Property<string>("Plate")
                         .IsRequired();
@@ -145,10 +145,9 @@ namespace ParkingSystem.Migrations
 
             modelBuilder.Entity("ParkingSystem.Models.ParkingSlot", b =>
                 {
-                    b.HasOne("ParkingSystem.Models.Customer", "Customer")
+                    b.HasOne("ParkingSystem.Models.Customer")
                         .WithMany("ParkingID")
-                        .HasForeignKey("CustomerID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("CustomerID");
                 });
 
             modelBuilder.Entity("ParkingSystem.Models.Payment", b =>

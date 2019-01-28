@@ -22,9 +22,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.ParkingSlot[0].TimeOut)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ParkingSlot[0].CustomerID)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -39,11 +36,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TimeOut)
-            </td>
-            <td>
-                <a asp-page="ParkingSystem/Pages/Customers/Index" asp-route-id="@item.Customer">
-                    @Model.GetFullName(item.CustomerID)
-                </a>
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.ParkingID">Edit</a> |
