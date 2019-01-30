@@ -15,6 +15,11 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Pricing.Period" />
             <div class="form-group">
+                <label asp-for="Pricing.Period" class="control-label"></label>
+                <input asp-for="Pricing.Period" class="form-control" />
+                <span asp-validation-for="Pricing.Period" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Pricing.Price" class="control-label"></label>
                 <input asp-for="Pricing.Price" class="form-control" />
                 <span asp-validation-for="Pricing.Price" class="text-danger"></span>

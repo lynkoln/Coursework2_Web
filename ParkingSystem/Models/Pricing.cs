@@ -9,6 +9,8 @@ namespace ParkingSystem.Models
     {
         [Key]
         [Required]
+        public int PricingID { get; set; }
+        [Required]
         public int Period { get; set; }
         [Required]
         public float Price { get; set; }

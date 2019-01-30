@@ -36,6 +36,7 @@ namespace ParkingSystem.Pages.Payments
 
         public IActionResult OnGet()
         {
+            
             ParkingDropdown(_context);
             return Page();
         }

@@ -11,6 +11,8 @@ namespace ParkingSystem.Models
     {
         [Key]
         [Required]
+        public int PositionID { get; set; }
+        [Required]
         public string Position { get; set; }
         [Required]
         public float Price { get; set; }

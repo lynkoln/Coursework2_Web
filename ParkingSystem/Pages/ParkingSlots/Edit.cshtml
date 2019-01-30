@@ -21,7 +21,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="ParkingSlot.TimeIn" class="control-label"></label>
-                <input asp-for="ParkingSlot.TimeIn" class="form-control" />
+                <input asp-for="ParkingSlot.TimeIn" class="form-control" readonly />
                 <span asp-validation-for="ParkingSlot.TimeIn" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -32,8 +32,8 @@
             <div class="form-group">
                 <label asp-for="ParkingSlot.CustomerID" class="control-label"></label>
                 <select asp-for="ParkingSlot.CustomerID" class="form-control"
-                        asp-items="@Model.CustomerSL">
-                    <option value="">-- Select Department --</option>
+                        asp-items="@Model.CustomerSL" >
+                    <option value="">-- Select Customer --</option>
                 </select>
                 <span asp-validation-for="ParkingSlot.CustomerID" class="text-danger" />
             </div>

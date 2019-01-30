@@ -12,7 +12,7 @@ namespace ParkingSystem.Models
         public int ReceiptNo { get; set; }
         [Required]
         public DateTime TimeOfPayment { get; set; }
-        [Required]
+        
         public decimal Total { get; set; }
         
         public int ParkingID { get; set; }
