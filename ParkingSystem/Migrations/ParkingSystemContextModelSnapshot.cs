@@ -55,9 +55,11 @@ namespace ParkingSystem.Migrations
 
                     b.Property<string>("Position");
 
+                    b.Property<int?>("PositionDiscountPositionID");
+
                     b.HasKey("CustomerID");
 
-                    b.HasIndex("Position");
+                    b.HasIndex("PositionDiscountPositionID");
 
                     b.ToTable("Customer");
                 });
@@ -90,11 +92,11 @@ namespace ParkingSystem.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CustomerID");
+                    b.Property<int>("ParkingID");
 
-                    b.Property<int?>("ParkingSlotParkingID");
+                    b.Property<int>("Period");
 
-                    b.Property<int?>("PricingPeriod");
+                    b.Property<int?>("PricingID");
 
                     b.Property<DateTime>("TimeOfPayment");
 
@@ -102,36 +104,40 @@ namespace ParkingSystem.Migrations
 
                     b.HasKey("ReceiptNo");
 
-                    b.HasIndex("CustomerID");
+                    b.HasIndex("ParkingID");
 
-                    b.HasIndex("ParkingSlotParkingID");
-
-                    b.HasIndex("PricingPeriod");
+                    b.HasIndex("PricingID");
 
                     b.ToTable("Payment");
                 });
 
             modelBuilder.Entity("ParkingSystem.Models.PositionDiscount", b =>
                 {
+                    b.Property<int>("PositionID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
                     b.Property<string>("Position")
-                        .ValueGeneratedOnAdd();
+                        .IsRequired();
 
                     b.Property<float>("Price");
 
-                    b.HasKey("Position");
+                    b.HasKey("PositionID");
 
                     b.ToTable("PositionDiscount");
                 });
 
             modelBuilder.Entity("ParkingSystem.Models.Pricing", b =>
                 {
-                    b.Property<int>("Period")
+                    b.Property<int>("PricingID")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("Period");
+
                     b.Property<float>("Price");
 
-                    b.HasKey("Period");
+                    b.HasKey("PricingID");
 
                     b.ToTable("Pricing");
                 });
@@ -140,7 +146,7 @@ namespace ParkingSystem.Migrations
                 {
                     b.HasOne("ParkingSystem.Models.PositionDiscount", "PositionDiscount")
                         .WithMany("CustomerID")
-                        .HasForeignKey("Position");
+                        .HasForeignKey("PositionDiscountPositionID");
                 });
 
             modelBuilder.Entity("ParkingSystem.Models.ParkingSlot", b =>
@@ -152,17 +158,14 @@ namespace ParkingSystem.Migrations
 
             modelBuilder.Entity("ParkingSystem.Models.Payment", b =>
                 {
-                    b.HasOne("ParkingSystem.Models.Customer")
+                    b.HasOne("ParkingSystem.Models.ParkingSlot", "ParkingSlot")
                         .WithMany("PaymentID")
-                        .HasForeignKey("CustomerID");
+                        .HasForeignKey("ParkingID")
+                        .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("ParkingSystem.Models.ParkingSlot")
+                    b.HasOne("ParkingSystem.Models.Pricing", "Pricing")
                         .WithMany("PaymentID")
-                        .HasForeignKey("ParkingSlotParkingID");
-
-                    b.HasOne("ParkingSystem.Models.Pricing")
-                        .WithMany("PaymentID")
-                        .HasForeignKey("PricingPeriod");
+                        .HasForeignKey("PricingID");
                 });
 #pragma warning restore 612, 618
         }

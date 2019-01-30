@@ -12,6 +12,21 @@ namespace ParkingSystem.Pages.Payments
 {
     public class EditModel : PageModel
     {
+        public SelectList ParkingSL { get; set; }
+
+        public void ParkingDropdown(ParkingSystemContext _context, object selectedParking = null)
+        {
+            var customerQuery = from d in _context.ParkingSlot
+                                orderby d.ParkingID
+                                select new SelectListItem
+                                {
+                                    Text = d.Plate,
+                                    Value = d.ParkingID.ToString()
+                                }; ;
+
+            ParkingSL = new SelectList(customerQuery, "Value", "Text", selectedParking);
+        }
+
         private readonly ParkingSystem.Models.ParkingSystemContext _context;
 
         public EditModel(ParkingSystem.Models.ParkingSystemContext context)
@@ -24,6 +39,7 @@ namespace ParkingSystem.Pages.Payments
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
+            ParkingDropdown(_context);
             if (id == null)
             {
                 return NotFound();

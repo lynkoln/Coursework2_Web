@@ -17,11 +17,19 @@ namespace ParkingSystem.Pages.Payments
         {
             _context = context;
         }
+        public object fullname;
+        public object GetFullName(int z)
+        {
+            ParkingSlot item = _context.ParkingSlot.Single(p => p.ParkingID == z);
 
+            fullname =  item.Plate;
+            return fullname;
+        }
         public Payment Payment { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
+           
             if (id == null)
             {
                 return NotFound();

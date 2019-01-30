@@ -5,33 +5,45 @@
     ViewData["Title"] = "Details";
 }
 
-<h2>Details</h2>
+<h2>Edit</h2>
+
+<h4>ParkingSlot</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ParkingSlot.ParkingID" />
+            <div class="form-group">
+                <label asp-for="ParkingSlot.Plate" class="control-label"></label>
+                <input asp-for="ParkingSlot.Plate" class="form-control" />
+                <span asp-validation-for="ParkingSlot.Plate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ParkingSlot.TimeIn" class="control-label"></label>
+                <input asp-for="ParkingSlot.TimeIn" class="form-control" />
+                <span asp-validation-for="ParkingSlot.TimeIn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ParkingSlot.TimeOut" class="control-label"></label>
+                <input asp-for="ParkingSlot.TimeOut" class="form-control" />
+                <span asp-validation-for="ParkingSlot.TimeOut" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ParkingSlot.CustomerID" class="control-label"></label>
+                <select asp-for="ParkingSlot.CustomerID" class="form-control"
+                        asp-items="@Model.CustomerSL">
+                    <option value="">-- Select Customer --</option>
+                </select>
+                <span asp-validation-for="ParkingSlot.CustomerID" class="text-danger" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
 
 <div>
-    <h4>ParkingSlot</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ParkingSlot.Plate)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ParkingSlot.Plate)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ParkingSlot.TimeIn)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ParkingSlot.TimeIn)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ParkingSlot.TimeOut)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ParkingSlot.TimeOut)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-page="./Edit" asp-route-id="@Model.ParkingSlot.ParkingID">Edit</a> |
     <a asp-page="./Index">Back to List</a>
 </div>

@@ -12,6 +12,12 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
+            @Html.DisplayNameFor(model => model.Payment.ReceiptNo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Payment.ReceiptNo)
+        </dd>
+        <dt>
             @Html.DisplayNameFor(model => model.Payment.TimeOfPayment)
         </dt>
         <dd>
@@ -21,8 +27,21 @@
             @Html.DisplayNameFor(model => model.Payment.Total)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Payment.Total)
+            £ @Html.DisplayFor(model => model.Payment.Total)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Payment.ParkingID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Payment.ParkingID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Payment.ParkingSlot.Plate)
+        </dt>
+        <dd>
+            @Model.GetFullName(Model.Payment.ParkingID)
+        </dd>
+
     </dl>
 </div>
 <div>

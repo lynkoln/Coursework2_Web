@@ -11,8 +11,6 @@
     <Compile Remove="Migrations\20190127005715_Init.Designer.cs" />
     <Compile Remove="Migrations\20190127010855_Init.cs" />
     <Compile Remove="Migrations\20190127010855_Init.Designer.cs" />
-    <Compile Remove="Migrations\Identity\20190129010654_CreateIdentitySchema.cs" />
-    <Compile Remove="Migrations\Identity\20190129010654_CreateIdentitySchema.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,11 +26,10 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Identity\Services\" />
+    <Folder Include="Areas\" />
     <Folder Include="Check\" />
   </ItemGroup>
 
