@@ -15,7 +15,7 @@ namespace ParkingSystem.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.1-rtm-30846")
+                .HasAnnotation("ProductVersion", "2.1.4-rtm-31024")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -92,9 +92,7 @@ namespace ParkingSystem.Migrations
 
                     b.Property<int>("ParkingID");
 
-                    b.Property<string>("Period");
-
-                    b.Property<int?>("PricingPeriod");
+                    b.Property<int>("Period");
 
                     b.Property<DateTime>("TimeOfPayment");
 
@@ -104,7 +102,7 @@ namespace ParkingSystem.Migrations
 
                     b.HasIndex("ParkingID");
 
-                    b.HasIndex("PricingPeriod");
+                    b.HasIndex("Period");
 
                     b.ToTable("Payment");
                 });
@@ -158,7 +156,8 @@ namespace ParkingSystem.Migrations
 
                     b.HasOne("ParkingSystem.Models.Pricing", "Pricing")
                         .WithMany("PaymentID")
-                        .HasForeignKey("PricingPeriod");
+                        .HasForeignKey("Period")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

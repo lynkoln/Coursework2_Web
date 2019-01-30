@@ -101,8 +101,7 @@ namespace ParkingSystem.Migrations
                     TimeOfPayment = table.Column<DateTime>(nullable: false),
                     Total = table.Column<decimal>(nullable: false),
                     ParkingID = table.Column<int>(nullable: false),
-                    Period = table.Column<string>(nullable: true),
-                    PricingPeriod = table.Column<int>(nullable: true)
+                    Period = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -114,11 +113,11 @@ namespace ParkingSystem.Migrations
                         principalColumn: "ParkingID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Payment_Pricing_PricingPeriod",
-                        column: x => x.PricingPeriod,
+                        name: "FK_Payment_Pricing_Period",
+                        column: x => x.Period,
                         principalTable: "Pricing",
                         principalColumn: "Period",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -137,9 +136,9 @@ namespace ParkingSystem.Migrations
                 column: "ParkingID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Payment_PricingPeriod",
+                name: "IX_Payment_Period",
                 table: "Payment",
-                column: "PricingPeriod");
+                column: "Period");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
