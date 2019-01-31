@@ -5,15 +5,17 @@
 }
 
 <div class="jumbotron">
-    <h1>PerfectParkingCo</h1>
+    <h1 style="text-align:center">PerfectParkingCo</h1>
 </div>
 <div class="navbar-collapse collapse">
-    <ul class="nav navbar-nav">
-        <li><a asp-page="/Admins/Index">Admins</a></li>
-        <li><a asp-page="/Customers/Index">Customers</a></li>
-        <li><a asp-page="/ParkingSlots/Index">ParkingSlots</a></li>
-        <li><a asp-page="/Payments/Index">Payments</a></li>
-        <li><a asp-page="/PositionDiscounts/Index">PositionDiscounts</a></li>
-        <li><a asp-page="/Pricings/Index">Pricings</a></li>
-    </ul>
+    <div class="row" style="padding-bottom:2%">
+        <div class="col-sm-4"><a class="btn btn-primary btn-block btn_custom" asp-page="/Admins/Index">Admins</a></div>
+        <div class="col-sm-4"><a class="btn btn-primary btn-block btn_custom" style="background-color:orangered" asp-page="/Customers/Index">Customers</a></div>
+        <div class="col-sm-4"><a class="btn btn-primary btn-block btn_custom" style="background-color:forestgreen" asp-page="/ParkingSlots/Index">Parking Slots</a></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4"><a class="btn btn-primary btn-block btn_custom" style="background-color:darkorange" asp-page="/Payments/Index">Payments</a></div>
+        <div class="col-sm-4"><a class="btn btn-primary btn-block btn_custom" style="background-color:dodgerblue" asp-page="/PositionDiscounts/Index">Position Discounts</a></div>
+        <div class="col-sm-4"><a class="btn btn-primary btn-block btn_custom" style="background-color:blueviolet" asp-page="/Pricings/Index">Pricing</a></div>
+    </div>
 </div>
